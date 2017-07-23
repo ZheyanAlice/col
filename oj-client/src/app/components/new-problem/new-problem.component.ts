@@ -15,7 +15,7 @@ const DEFAULT_PROBLEM: Problem = Object.freeze({
 })
 export class NewProblemComponent implements OnInit {
   newProblem: Problem = Object.assign({}, DEFAULT_PROBLEM);
-  difficulties: string[] = ['easy', 'medium', 'hard', 'super']
+  difficulties: string[] = ['easy', 'medium', 'hard', 'super'];
   constructor(@Inject('data') private data) { }
 
   ngOnInit() {
@@ -23,8 +23,8 @@ export class NewProblemComponent implements OnInit {
 
   addProblem() {
     this.data.addProblem(this.newProblem)
-     .catch(error => console.log(error.body));
-   this.newProblem = Object.assign({}, DEFAULT_PROBLEM);
+      .catch(error => console.log(error.body));
+    this.newProblem = Object.assign({}, DEFAULT_PROBLEM);
   }
 
 }

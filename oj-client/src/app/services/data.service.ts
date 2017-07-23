@@ -7,24 +7,21 @@ import 'rxjs/add/operator/toPromise';
 import { Problem } from '../data-structure/problem';
 import { PROBLEMS } from '../mock-problems';
 
-
 @Injectable()
 export class DataService {
   // problems: Problem[] = PROBLEMS;
   private _problemSource = new BehaviorSubject<Problem[]>([]);
   constructor(private http: Http) { }
 
-
   getProblems(): Observable<Problem[]> {
     // return this.problems;
     this.http.get('api/v1/problems')
-     .toPromise()
-     .then((res: Response) => {
-       this._problemSource.next(res.json());
-     })
-     .catch(this.handleError);
-   return this._problemSource.asObservable();
-
+      .toPromise()
+      .then((res: Response) => {
+        this._problemSource.next(res.json());
+      })
+      .catch(this.handleError);
+    return this._problemSource.asObservable();
   }
 
   getProblem(id: number) {
